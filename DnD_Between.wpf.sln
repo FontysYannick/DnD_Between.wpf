@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnD_Between.wpf", "DnD_Between.wpf\DnD_Between.wpf.csproj", "{CA164BAF-E016-427C-A410-68D59B96544C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA164BAF-E016-427C-A410-68D59B96544C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA164BAF-E016-427C-A410-68D59B96544C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA164BAF-E016-427C-A410-68D59B96544C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA164BAF-E016-427C-A410-68D59B96544C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC139F45-4FA2-4732-8371-C039E6780F20}
+	EndGlobalSection
+EndGlobal

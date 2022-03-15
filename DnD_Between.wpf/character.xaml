@@ -1,0 +1,43 @@
+﻿<Window x:Class="DnD_Between.wpf.character"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DnD_Between.wpf"
+        mc:Ignorable="d"
+        Title="character" Height="450" Width="800">
+    <Grid Margin="3,4,-3,-4">
+        <Button x:Name="BTNSave" Content="Save" HorizontalAlignment="Left" Margin="66
+                ,369,0,0" VerticalAlignment="Top" Height="23" Width="77" Click="BTNSave_Click"/>
+        <Label Content="Name :" HorizontalAlignment="Left" Margin="66,27,0,0" VerticalAlignment="Top" Height="27"/>
+        <TextBox x:Name="TBName" HorizontalAlignment="Left" Margin="151,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="27"/>
+        <Rectangle HorizontalAlignment="Left" Height="170" Margin="66
+                   ,182,0,0" Stroke="Black" VerticalAlignment="Top" Width="280"/>
+        <Label Content="Stats :" HorizontalAlignment="Left" Margin="66
+               ,150,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label Content="Strength" HorizontalAlignment="Left" Margin="89,227,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox x:Name="TBStr" HorizontalAlignment="Left" Margin="89,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" FontSize="20" TextAlignment="Center"/>
+        <Label Content="Dexterity" HorizontalAlignment="Left" Margin="174,227,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox x:Name="TBDex" HorizontalAlignment="Left" Margin="175,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" TextAlignment="Center" FontSize="20"/>
+        <Label Content="Constitution" HorizontalAlignment="Left" Margin="251,227,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox x:Name="TBCon" HorizontalAlignment="Left" Margin="261,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" TextAlignment="Center" FontSize="20"/>
+        <Label Content="Intelegence" HorizontalAlignment="Left" Margin="81,300,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox x:Name="TBInt" HorizontalAlignment="Left" Margin="89,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" TextAlignment="Center" FontSize="20"/>
+        <Label Content="Wisdom" HorizontalAlignment="Left" Margin="175,300,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox x:Name="TBWis" HorizontalAlignment="Left" Margin="175,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" TextAlignment="Center" FontSize="20"/>
+        <Label Content="Charisma" HorizontalAlignment="Left" Margin="261,300,0,0" VerticalAlignment="Top" Height="28"/>
+        <TextBox x:Name="TBCha" HorizontalAlignment="Left" Margin="261,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" TextAlignment="Center" FontSize="20"/>
+        <Button x:Name="BTNUpdate" Content="Update" HorizontalAlignment="Left" Margin="170,369,0,0" VerticalAlignment="Top" Height="23" Width="76" Click="BTNUpdate_Click"/>
+        <Button x:Name="BTNDel" Content="Delete" HorizontalAlignment="Left" Margin="271,369,0,0" VerticalAlignment="Top" Height="23" Width="77" Click="BTNDel_Click"/>
+        <ComboBox x:Name="CMBClass" HorizontalAlignment="Left" Margin="151,59,0,0" VerticalAlignment="Top" Width="120" Height="27
+                  "/>
+        <Label HorizontalAlignment="Left" Margin="66,59,0,0" VerticalAlignment="Top" Height="27" Content="Class :"/>
+        <ComboBox x:Name="CMBLvl" HorizontalAlignment="Left" Margin="609,59,0,0" VerticalAlignment="Top" Width="63" Height="27"/>
+        <Label HorizontalAlignment="Left" Margin="525,59,0,0" VerticalAlignment="Top" Height="27" Content="Level :"/>
+        <ComboBox x:Name="CMBSpeed" HorizontalAlignment="Left" Margin="609,91,0,0" VerticalAlignment="Top" Width="63" Height="27"/>
+        <Label HorizontalAlignment="Left" Margin="525,91,0,0" VerticalAlignment="Top" Height="27" Content="Speed :"/>
+        <ComboBox x:Name="CMBRace" HorizontalAlignment="Left" Margin="151,91,0,0" VerticalAlignment="Top" Width="120" Height="27                   "/>
+        <Label HorizontalAlignment="Left" Margin="66,91,0,0" VerticalAlignment="Top" Height="27" Content="Race :"/>
+
+    </Grid>
+</Window>
