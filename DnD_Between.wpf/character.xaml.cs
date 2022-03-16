@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DnD_Between.wpf
 {
@@ -23,6 +10,8 @@ namespace DnD_Between.wpf
     public partial class character : Window
     {
         private readonly MainWindow frm1;
+        Class cls;
+        Race race;
         Characterclass charclass;
         Charactercontainer charac = new Charactercontainer();
 
@@ -33,7 +22,13 @@ namespace DnD_Between.wpf
             InitializeComponent();
             frm1 = frm;
             BTNUpdate.IsEnabled = false;
-            BTNDel.IsEnabled    = false;
+            BTNDel.IsEnabled = false;
+
+            cls = new Class(this);
+            race = new Race(this);
+
+            cls.fillcmbclass();
+            race.fillcmbrace();
 
             for (int i = 1; i <= 20; i++)
             {
@@ -51,15 +46,15 @@ namespace DnD_Between.wpf
             InitializeComponent();
             frm1 = frm;
             BTNSave.IsEnabled = false;
-            this.charclass  = characterclass;
-            this.ID         = charclass.ID;
-            TBName.Text     = charclass.name;
-            TBStr.Text      = charclass.str.ToString();
-            TBDex.Text      = charclass.dex.ToString();
-            TBCon.Text      = charclass.con.ToString();
-            TBWis.Text      = charclass.wis.ToString();
-            TBInt.Text      = charclass.intt.ToString();
-            TBCha.Text      = charclass.con.ToString();
+            this.charclass = characterclass;
+            this.ID = charclass.ID;
+            TBName.Text = charclass.name;
+            TBStr.Text = charclass.str.ToString();
+            TBDex.Text = charclass.dex.ToString();
+            TBCon.Text = charclass.con.ToString();
+            TBWis.Text = charclass.wis.ToString();
+            TBInt.Text = charclass.intt.ToString();
+            TBCha.Text = charclass.con.ToString();
         }
 
         private void BTNSave_Click(object sender, RoutedEventArgs e)

@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dgchar" HorizontalAlignment="Left" Width="621" Height="424" VerticalAlignment="Top" SelectionChanged="dgchar_SelectionChanged"/>
+        <DataGrid x:Name="dgchar" SelectionChanged="dgchar_SelectionChanged" HorizontalAlignment="Left" Width="621" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="150" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Level" Width="50" Binding="{Binding level}"/>
+                <DataGridTextColumn Header="Class" Width="100" Binding="{Binding class}"/>
+                <DataGridTextColumn Header="Race" Width="100" Binding="{Binding race}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="BTNCreate" Content="Create" Margin="0,10,10,0" Click="BTNCreate_Click" HorizontalAlignment="Right" Width="139" Height="63" VerticalAlignment="Top"/>
         <Label x:Name="LBSelect" Content="Selected" HorizontalAlignment="Left" Margin="696,189,0,0" VerticalAlignment="Top"/>
         <Button x:Name="BTNCreate_Copy" Content="Create" Margin="0,10,10,0" Click="BTNCreate_Click" HorizontalAlignment="Right" Width="139" Height="63" VerticalAlignment="Top"/>

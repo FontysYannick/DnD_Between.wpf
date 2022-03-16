@@ -29,8 +29,7 @@
         <TextBox x:Name="TBCha" HorizontalAlignment="Left" Margin="261,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" TextAlignment="Center" FontSize="20"/>
         <Button x:Name="BTNUpdate" Content="Update" HorizontalAlignment="Left" Margin="170,369,0,0" VerticalAlignment="Top" Height="23" Width="76" Click="BTNUpdate_Click"/>
         <Button x:Name="BTNDel" Content="Delete" HorizontalAlignment="Left" Margin="271,369,0,0" VerticalAlignment="Top" Height="23" Width="77" Click="BTNDel_Click"/>
-        <ComboBox x:Name="CMBClass" HorizontalAlignment="Left" Margin="151,59,0,0" VerticalAlignment="Top" Width="120" Height="27
-                  "/>
+        <ComboBox x:Name="CMBClass" HorizontalAlignment="Left" Margin="151,59,0,0" VerticalAlignment="Top" Width="120" Height="27"/>
         <Label HorizontalAlignment="Left" Margin="66,59,0,0" VerticalAlignment="Top" Height="27" Content="Class :"/>
         <ComboBox x:Name="CMBLvl" HorizontalAlignment="Left" Margin="609,59,0,0" VerticalAlignment="Top" Width="63" Height="27"/>
         <Label HorizontalAlignment="Left" Margin="525,59,0,0" VerticalAlignment="Top" Height="27" Content="Level :"/>
