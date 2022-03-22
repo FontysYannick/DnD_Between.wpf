@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Windows;
 
 namespace DnD_Between.wpf
@@ -13,7 +12,7 @@ namespace DnD_Between.wpf
         Class cls;
         Race race;
         Characterclass charclass;
-        Charactercontainer charac = new Charactercontainer();
+        Character_Container charac = new Character_Container();
 
         private int ID;
 
@@ -55,6 +54,8 @@ namespace DnD_Between.wpf
             TBWis.Text = charclass.wis.ToString();
             TBInt.Text = charclass.intt.ToString();
             TBCha.Text = charclass.con.ToString();
+            CMBLvl.Text = charclass.level.ToString();
+            CMBSpeed.Text = charclass.level.ToString();
         }
 
         private void BTNSave_Click(object sender, RoutedEventArgs e)
@@ -67,7 +68,9 @@ namespace DnD_Between.wpf
             int wis = Int32.Parse(TBWis.Text);
             int cha = Int32.Parse(TBCha.Text);
 
-            charac.AddCharacter(name, str, dex, con, intt, wis, cha);
+            MessageBox.Show(CMBClass.Text);
+
+            //charac.AddCharacter(name, str, dex, con, intt, wis, cha);
             frm1.FillDataGrid();
             this.Close();
         }

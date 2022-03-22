@@ -40,7 +40,7 @@ namespace DnD_Between.wpf
         }
 
         public Characterclass(MainWindow frm)
-        { 
+        {
             this.frm1 = frm;
         }
 

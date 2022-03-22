@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,6 +12,7 @@ namespace DnD_Between.wpf
     {
         private character chafrm;
         private Characterclass chaclass;
+        private Character_Container chaContainer;
 
         private int ID;
 
@@ -27,8 +26,11 @@ namespace DnD_Between.wpf
 
         public void FillDataGrid()
         {
-            chaclass = new Characterclass(this);
-            chaclass.FillDataGrid();
+            chaContainer = new Character_Container();
+            this.dgchar.ItemsSource = chaContainer.Getall();
+
+            //chaclass = new Characterclass(this);
+            //chaclass.FillDataGrid();
         }
 
         private void BTNCreate_Click(object sender, RoutedEventArgs e)
@@ -36,6 +38,17 @@ namespace DnD_Between.wpf
             chafrm = new character(this);
             chafrm.Show();
         }
+
+        private void BTNEdit_Click(object sender, RoutedEventArgs e)
+        {
+            chafrm = new character(this, chaclass);
+            chafrm.Show();
+        }
+
+
+
+
+
 
         private void dgchar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -51,9 +64,13 @@ namespace DnD_Between.wpf
                 int wis = convertTOint(_DataView.Row[5].ToString());
                 int intt = convertTOint(_DataView.Row[6].ToString());
                 int cha = convertTOint(_DataView.Row[7].ToString());
+                int level = convertTOint(_DataView.Row[8].ToString());
+                int speed = convertTOint(_DataView.Row[9].ToString());
+                int class_id = convertTOint(_DataView.Row[10].ToString());
+                int race_id = convertTOint(_DataView.Row[11].ToString());
 
                 LBSelect.Content = ID;
-                //chaclass = new Characterclass(ID, name, str, dex, con, intt, wis, cha);
+                chaclass = new Characterclass(ID, name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
 
                 BTNEdit.IsEnabled = true;
             }
@@ -63,12 +80,6 @@ namespace DnD_Between.wpf
         {
             int convert = Int32.Parse(conv);
             return convert;
-        }
-
-        private void BTNEdit_Click(object sender, RoutedEventArgs e)
-        {
-            chafrm = new character(this, chaclass);
-            chafrm.Show();
         }
     }
 }
