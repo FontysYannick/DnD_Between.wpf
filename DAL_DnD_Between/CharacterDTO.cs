@@ -14,6 +14,5 @@
         public int speed { get; set; }
         public int class_id { get; set; }
         public int race_id { get; set; }
-
     }
 }

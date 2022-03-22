@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data;
-using MySql.Data.MySqlClient;
 
 namespace DAL_DnD_Between
 {
@@ -10,11 +8,10 @@ namespace DAL_DnD_Between
     {
         private SqlConnection mssql = new SqlConnection("Data Source=mssqlstud.fhict.local;Initial Catalog=dbi485841;Persist Security Info=True;User ID=dbi485841;Password=Duj7t6ySa1");
 
-
         public void AddCharacter(string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, int class_id, int race_id)
         {
             SqlCommand cmd = new SqlCommand("INSERT INTO Character( [name],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id])" +
-                "VALUES ( '" + name + "', '" + str + "', '" + dex + "','" + con + "','" + wis + "','" + intt + "','" + cha + "','" + level + "','" + speed + "','" + class_id + "','" + race_id + "')");
+                "VALUES ( '" + name + "', '" + str + "', '" + dex + "','" + con + "','" + wis + "','" + intt + "','" + cha + "','" + level + "','" + speed + "','" + class_id + "','" + race_id + "')", mssql);
 
             try
             {
@@ -29,7 +26,7 @@ namespace DAL_DnD_Between
 
         public void DeleteCharacter(int ID)
         {
-            SqlCommand cmd = new SqlCommand("Delete from Character Where id =" + ID);
+            SqlCommand cmd = new SqlCommand("Delete from Character Where id =" + ID, mssql);
 
             try
             {
@@ -47,9 +44,9 @@ namespace DAL_DnD_Between
             List<CharacterDTO> CharacterDTOList = new List<CharacterDTO>();
 
             string query = "SELECT * FROM Character";
-            MySqlCommand commandDatabase = new MySqlCommand(query);
+            SqlCommand commandDatabase = new SqlCommand(query, mssql);
             commandDatabase.CommandTimeout = 60;
-            MySqlDataReader reader;
+            SqlDataReader reader;
 
             try
             {
@@ -96,9 +93,9 @@ namespace DAL_DnD_Between
             List<CharacterDTO> CharacterDtoList = new List<CharacterDTO>();
 
             string query = "SELECT * FROM Character WHERE id = " + id;
-            MySqlCommand commandDatabase = new MySqlCommand(query);
+            SqlCommand commandDatabase = new SqlCommand(query);
             commandDatabase.CommandTimeout = 60;
-            MySqlDataReader reader;
+            SqlDataReader reader;
 
             try
             {

@@ -6,44 +6,30 @@ namespace DnD_Between.wpf
     /// <summary>
     /// Interaction logic for character.xaml
     /// </summary>
-    public partial class character : Window
+    public partial class character_form : Window
     {
-        private readonly MainWindow frm1;
-        Class cls;
-        Race race;
-        Characterclass charclass;
         Character_Container charac = new Character_Container();
+        Class_Container classcontainer = new Class_Container();
+        Race_Container racecontainer = new Race_Container();
+        MainWindow frm1 = new MainWindow();
+        Character charclass;
 
         private int ID;
 
-        public character(MainWindow frm)
+        public character_form(MainWindow frm)
         {
             InitializeComponent();
-            frm1 = frm;
+            loadCMB();
+            this.frm1 = frm;
             BTNUpdate.IsEnabled = false;
             BTNDel.IsEnabled = false;
-
-            cls = new Class(this);
-            race = new Race(this);
-
-            cls.fillcmbclass();
-            race.fillcmbrace();
-
-            for (int i = 1; i <= 20; i++)
-            {
-                CMBLvl.Items.Add(i);
-            }
-
-            for (int i = 20; i <= 50; i += 5)
-            {
-                CMBSpeed.Items.Add(i);
-            }
         }
 
-        public character(MainWindow frm, Characterclass characterclass)
+        public character_form(MainWindow frm, Character characterclass)
         {
             InitializeComponent();
-            frm1 = frm;
+            loadCMB();
+            this.frm1 = frm;
             BTNSave.IsEnabled = false;
             this.charclass = characterclass;
             this.ID = charclass.ID;
@@ -53,9 +39,30 @@ namespace DnD_Between.wpf
             TBCon.Text = charclass.con.ToString();
             TBWis.Text = charclass.wis.ToString();
             TBInt.Text = charclass.intt.ToString();
-            TBCha.Text = charclass.con.ToString();
+            TBCha.Text = charclass.cha.ToString();
             CMBLvl.Text = charclass.level.ToString();
-            CMBSpeed.Text = charclass.level.ToString();
+            CMBSpeed.Text = charclass.speed.ToString();
+            CMBClass.SelectedIndex = charclass.class_id - 1;
+            CMBRace.SelectedIndex = charclass.race_id - 1;
+        }
+
+        private void loadCMB()
+        {
+            for (int i = 1; i <= 20; i++)
+            {
+                CMBLvl.Items.Add(i);
+            }
+
+            for (int i = 20; i <= 50; i += 5)
+            {
+                CMBSpeed.Items.Add(i);
+            }
+
+            CMBClass.ItemsSource = classcontainer.Getall();
+            CMBRace.ItemsSource = racecontainer.Getall();
+
+            CMBLvl.SelectedIndex = 0;
+            CMBSpeed.SelectedIndex = 2;
         }
 
         private void BTNSave_Click(object sender, RoutedEventArgs e)
@@ -67,10 +74,12 @@ namespace DnD_Between.wpf
             int intt = Int32.Parse(TBInt.Text);
             int wis = Int32.Parse(TBWis.Text);
             int cha = Int32.Parse(TBCha.Text);
+            int level = Int32.Parse(CMBLvl.Text);
+            int speed = Int32.Parse(CMBSpeed.Text);
+            int class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
+            int race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
 
-            MessageBox.Show(CMBClass.Text);
-
-            //charac.AddCharacter(name, str, dex, con, intt, wis, cha);
+            charac.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
             frm1.FillDataGrid();
             this.Close();
         }
@@ -84,8 +93,12 @@ namespace DnD_Between.wpf
             int intt = Int32.Parse(TBInt.Text);
             int wis = Int32.Parse(TBWis.Text);
             int cha = Int32.Parse(TBCha.Text);
+            int level = Int32.Parse(CMBLvl.Text);
+            int speed = Int32.Parse(CMBSpeed.Text);
+            int class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
+            int race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
 
-            //charac.UpdateCharacter(name, str, dex, con, intt, wis, cha);
+            charclass.UpdateCharacter(ID, name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
             frm1.FillDataGrid();
             this.Close();
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,9 +9,9 @@ namespace DnD_Between.wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        private character chafrm;
-        private Characterclass chaclass;
         private Character_Container chaContainer;
+        private character_form chafrm;
+        private Character chaclass;
 
         private int ID;
 
@@ -27,59 +26,52 @@ namespace DnD_Between.wpf
         public void FillDataGrid()
         {
             chaContainer = new Character_Container();
-            this.dgchar.ItemsSource = chaContainer.Getall();
+            List<Character> list = chaContainer.Getall();
 
-            //chaclass = new Characterclass(this);
-            //chaclass.FillDataGrid();
+            this.dgchar.ItemsSource = chaContainer.Getall();
         }
 
         private void BTNCreate_Click(object sender, RoutedEventArgs e)
         {
-            chafrm = new character(this);
+            chafrm = new character_form(this);
             chafrm.Show();
         }
 
         private void BTNEdit_Click(object sender, RoutedEventArgs e)
         {
-            chafrm = new character(this, chaclass);
+            chafrm = new character_form(this, chaclass);
             chafrm.Show();
         }
 
-
-
-
-
-
         private void dgchar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataRowView _DataView = dgchar.CurrentCell.Item as DataRowView;
-
-            if (_DataView != null)
+            if (dgchar.SelectedItem != null)
             {
-                ID = convertTOint(_DataView.Row[0].ToString());
-                string name = _DataView.Row[1].ToString();
-                int str = convertTOint(_DataView.Row[2].ToString());
-                int dex = convertTOint(_DataView.Row[3].ToString());
-                int con = convertTOint(_DataView.Row[4].ToString());
-                int wis = convertTOint(_DataView.Row[5].ToString());
-                int intt = convertTOint(_DataView.Row[6].ToString());
-                int cha = convertTOint(_DataView.Row[7].ToString());
-                int level = convertTOint(_DataView.Row[8].ToString());
-                int speed = convertTOint(_DataView.Row[9].ToString());
-                int class_id = convertTOint(_DataView.Row[10].ToString());
-                int race_id = convertTOint(_DataView.Row[11].ToString());
+                if (dgchar.SelectedItem is Character)
+                {
+                    var row = (Character)dgchar.SelectedItem;
 
-                LBSelect.Content = ID;
-                chaclass = new Characterclass(ID, name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
+                    if (row != null)
+                    {
+                        ID = row.ID;
+                        string name = row.name;
+                        int str = row.str;
+                        int dex = row.dex;
+                        int con = row.con;
+                        int wis = row.wis;
+                        int intt = row.intt;
+                        int cha = row.cha;
+                        int level = row.level;
+                        int speed = row.speed;
+                        int class_id = row.class_id;
+                        int race_id = row.race_id;
 
-                BTNEdit.IsEnabled = true;
+                        chaclass = new Character(ID, name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
+                        LBSelect.Content = row.ID;
+                        BTNEdit.IsEnabled = true;
+                    }
+                }
             }
-        }
-
-        private int convertTOint(string conv)
-        {
-            int convert = Int32.Parse(conv);
-            return convert;
         }
     }
 }

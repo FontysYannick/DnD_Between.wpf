@@ -17,25 +17,25 @@ namespace DnD_Between.wpf
             _Context.DeleteCharacter(ID);
         }
 
-        public List<Characterclass> Getall()
+        public List<Character> Getall()
         {
-            List<Characterclass> list = new List<Characterclass>();
+            List<Character> list = new List<Character>();
 
             foreach (var item in _Context.Getall())
             {
-                list.Add(new Characterclass(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.class_id, item.race_id));
+                list.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.class_id, item.race_id));
             }
 
             return list;
         }
 
-        public List<Characterclass> Getbyid(int ID)
+        public List<Character> Getbyid(int ID)
         {
-            List<Characterclass> list = new List<Characterclass>();
+            List<Character> list = new List<Character>();
 
             foreach (var item in _Context.Getall())
             {
-                list.Add(new Characterclass(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.class_id, item.race_id));
+                list.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.class_id, item.race_id));
             }
 
             return list;

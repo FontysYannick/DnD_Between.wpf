@@ -1,29 +1,16 @@
-﻿using System.Data.SqlClient;
-
-namespace DnD_Between.wpf
+﻿namespace DnD_Between.wpf
 {
     public class Class
     {
-        private readonly character character;
-        private SqlConnection mssql = new SqlConnection("Data Source=mssqlstud.fhict.local;Initial Catalog=dbi485841;Persist Security Info=True;User ID=dbi485841;Password=Duj7t6ySa1");
+        public int ID { get; private set; }
+        public string name { get; private set; }
 
-        public Class(character character)
+
+        public Class(int id, string name)
         {
-            this.character = character;
+            this.ID = id;
+            this.name = name;
         }
 
-        public void fillcmbclass()
-        {
-            SqlCommand sqlCmd = new SqlCommand("SELECT * FROM Class", mssql);
-            mssql.Open();
-            SqlDataReader sqlReader = sqlCmd.ExecuteReader();
-
-            while (sqlReader.Read())
-            {
-                character.CMBClass.Items.Add(sqlReader["class"].ToString());
-            }
-
-            sqlReader.Close();
-        }
     }
 }
