@@ -26,8 +26,6 @@ namespace DnD_Between.wpf
         public void FillDataGrid()
         {
             chaContainer = new Character_Container();
-            List<Character> list = chaContainer.Getall();
-
             this.dgchar.ItemsSource = chaContainer.Getall();
         }
 
