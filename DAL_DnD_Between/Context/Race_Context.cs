@@ -4,22 +4,20 @@ using System.Data.SqlClient;
 
 namespace DAL_DnD_Between
 {
-    public class Race_Context
+    public class Race_Context  : DB
     {
-        private SqlConnection mssql = new SqlConnection("Data Source=mssqlstud.fhict.local;Initial Catalog=dbi485841;Persist Security Info=True;User ID=dbi485841;Password=Duj7t6ySa1");
-
         public List<RaceDTO> Getall()
         {
             List<RaceDTO> RaceDTOlist = new List<RaceDTO>();
 
             string query = "SELECT * FROM Race";
-            SqlCommand commandDatabase = new SqlCommand(query, mssql);
+            SqlCommand commandDatabase = new SqlCommand(query, Connection());
             commandDatabase.CommandTimeout = 60;
             SqlDataReader reader;
 
             try
             {
-                mssql.Open();
+                Open();
                 reader = commandDatabase.ExecuteReader();
 
                 if (reader.HasRows)
@@ -39,10 +37,11 @@ namespace DAL_DnD_Between
                 {
                     Console.WriteLine("No rows found.");
                 }
-                mssql.Close();
+                Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
 
             return RaceDTOlist;

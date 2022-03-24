@@ -4,38 +4,38 @@ using System.Data.SqlClient;
 
 namespace DAL_DnD_Between
 {
-    public class Character_Context
+    public class Character_Context : DB
     {
-        private SqlConnection mssql = new SqlConnection("Data Source=mssqlstud.fhict.local;Initial Catalog=dbi485841;Persist Security Info=True;User ID=dbi485841;Password=Duj7t6ySa1");
-
         public void AddCharacter(string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, int class_id, int race_id)
         {
             SqlCommand cmd = new SqlCommand("INSERT INTO Character( [name],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id])" +
-                "VALUES ( '" + name + "', '" + str + "', '" + dex + "','" + con + "','" + wis + "','" + intt + "','" + cha + "','" + level + "','" + speed + "','" + class_id + "','" + race_id + "')", mssql);
+                "VALUES ( '" + name + "', '" + str + "', '" + dex + "','" + con + "','" + wis + "','" + intt + "','" + cha + "','" + level + "','" + speed + "','" + class_id + "','" + race_id + "')", Connection());
 
             try
             {
-                mssql.Open();
+                Open();
                 cmd.ExecuteNonQuery();
-                mssql.Close();
+                Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
         }
 
         public void DeleteCharacter(int ID)
         {
-            SqlCommand cmd = new SqlCommand("Delete from Character Where id =" + ID, mssql);
+            SqlCommand cmd = new SqlCommand("Delete from Character Where id =" + ID, Connection());
 
             try
             {
-                mssql.Open();
+                Open();
                 cmd.ExecuteNonQuery();
-                mssql.Close();
+                Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -43,14 +43,14 @@ namespace DAL_DnD_Between
         {
             List<CharacterDTO> CharacterDTOList = new List<CharacterDTO>();
 
-            string query = "SELECT * FROM Character";
-            SqlCommand commandDatabase = new SqlCommand(query, mssql);
+            string query = "SELECT Character.*, Class.class, Race.race FROM Character JOIN Class on Character.class_id = Class.Id JOIN Race on Character.race_id = Race.id";
+            SqlCommand commandDatabase = new SqlCommand(query, Connection());
             commandDatabase.CommandTimeout = 60;
             SqlDataReader reader;
 
             try
             {
-                mssql.Open();
+                Open();
                 reader = commandDatabase.ExecuteReader();
 
                 if (reader.HasRows)
@@ -69,8 +69,8 @@ namespace DAL_DnD_Between
                             cha = reader.GetInt32(7),
                             level = reader.GetInt32(8),
                             speed = reader.GetInt32(9),
-                            class_id = reader.GetInt32(10),
-                            race_id = reader.GetInt32(11)
+                            char_class = new ClassDTO() { ID = reader.GetInt32(10), name = reader.GetString(12)},
+                            char_race = new RaceDTO() { ID = reader.GetInt32(11), name = reader.GetString(13)}
                         };
                         CharacterDTOList.Add(items);
                     }
@@ -79,10 +79,11 @@ namespace DAL_DnD_Between
                 {
                     Console.WriteLine("No rows found.");
                 }
-                mssql.Close();
+                Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
 
             return CharacterDTOList;
@@ -93,13 +94,13 @@ namespace DAL_DnD_Between
             List<CharacterDTO> CharacterDtoList = new List<CharacterDTO>();
 
             string query = "SELECT * FROM Character WHERE id = " + id;
-            SqlCommand commandDatabase = new SqlCommand(query);
+            SqlCommand commandDatabase = new SqlCommand(query, Connection());
             commandDatabase.CommandTimeout = 60;
             SqlDataReader reader;
 
             try
             {
-                mssql.Open();
+                Open();
                 reader = commandDatabase.ExecuteReader();
 
                 if (reader.HasRows)
@@ -118,8 +119,8 @@ namespace DAL_DnD_Between
                             cha = reader.GetInt32(7),
                             level = reader.GetInt32(8),
                             speed = reader.GetInt32(9),
-                            class_id = reader.GetInt32(10),
-                            race_id = reader.GetInt32(11)
+                            char_class = new ClassDTO() { ID = reader.GetInt32(10), name = reader.GetString(12) },
+                            char_race = new RaceDTO() { ID = reader.GetInt32(11), name = reader.GetString(13) }
                         };
                         CharacterDtoList.Add(items);
                     }
@@ -129,10 +130,11 @@ namespace DAL_DnD_Between
                     Console.WriteLine("No rows found.");
                 }
 
-                mssql.Close();
+                Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
 
             return CharacterDtoList;

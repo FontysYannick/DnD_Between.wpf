@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB.cs" />
     <Compile Include="DTO\CharacterDTO.cs" />
     <Compile Include="Context\Character_Context.cs" />
     <Compile Include="DTO\ClassDTO.cs" />

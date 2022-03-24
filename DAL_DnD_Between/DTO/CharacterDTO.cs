@@ -12,7 +12,7 @@
         public int cha { get; set; }
         public int level { get; set; }
         public int speed { get; set; }
-        public int class_id { get; set; }
-        public int race_id { get; set; }
+        public ClassDTO char_class { get; set; }
+        public RaceDTO char_race { get; set; }
     }
 }

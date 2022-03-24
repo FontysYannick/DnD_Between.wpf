@@ -23,7 +23,7 @@ namespace DnD_Between.wpf
 
             foreach (var item in _Context.Getall())
             {
-                list.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.class_id, item.race_id));
+                list.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.char_class, item.char_race));
             }
 
             return list;

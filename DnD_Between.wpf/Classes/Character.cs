@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
+using DAL_DnD_Between;
 
 namespace DnD_Between.wpf
 {
-    public class Character
+    public class Character : DB
     {
-        private SqlConnection mssql = new SqlConnection("Data Source=mssqlstud.fhict.local;Initial Catalog=dbi485841;Persist Security Info=True;User ID=dbi485841;Password=Duj7t6ySa1");
-
         public int ID { get; private set; }
         public string name { get; private set; }
         public int str { get; private set; }
@@ -51,16 +50,17 @@ namespace DnD_Between.wpf
                 " [speed]           = '" + speed + "'," +
                 " [class_id]        = '" + class_id + "'," +
                 " [race_id]         = '" + race_id + "'" +
-                "WHERE id           = '" + ID + "'", mssql);
+                "WHERE id           = '" + ID + "'", Connection());
 
             try
             {
-                mssql.Open();
+                Open();
                 cmd.ExecuteNonQuery();
-                mssql.Close();
+                Close();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
         }
     }

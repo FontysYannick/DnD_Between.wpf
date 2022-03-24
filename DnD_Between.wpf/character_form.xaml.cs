@@ -8,7 +8,7 @@ namespace DnD_Between.wpf
     /// </summary>
     public partial class character_form : Window
     {
-        Character_Container charac = new Character_Container();
+        Character_Container charcontainer = new Character_Container();
         Class_Container classcontainer = new Class_Container();
         Race_Container racecontainer = new Race_Container();
         MainWindow frm1 = new MainWindow();
@@ -79,7 +79,7 @@ namespace DnD_Between.wpf
             int class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
             int race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
 
-            charac.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
+            charcontainer.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
             frm1.FillDataGrid();
             this.Close();
         }
@@ -105,7 +105,7 @@ namespace DnD_Between.wpf
 
         private void BTNDel_Click(object sender, RoutedEventArgs e)
         {
-            charac.DeleteCharacter(this.ID);
+            charcontainer.DeleteCharacter(this.ID);
             frm1.FillDataGrid();
             this.Close();
         }
