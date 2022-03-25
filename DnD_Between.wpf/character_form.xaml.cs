@@ -122,7 +122,7 @@ namespace DnD_Between.wpf
                 class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
                 race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
 
-                charcontainer.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
+                charclass.UpdateCharacter(ID, name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
                 frm1.FillDataGrid();
                 this.Close();
             }
