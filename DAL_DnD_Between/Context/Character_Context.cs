@@ -69,8 +69,8 @@ namespace DAL_DnD_Between
                             cha = reader.GetInt32(7),
                             level = reader.GetInt32(8),
                             speed = reader.GetInt32(9),
-                            char_class = new ClassDTO() { ID = reader.GetInt32(10), name = reader.GetString(12)},
-                            char_race = new RaceDTO() { ID = reader.GetInt32(11), name = reader.GetString(13)}
+                            char_class = new ClassDTO() { ID = reader.GetInt32(10), name = reader.GetString(12) },
+                            char_race = new RaceDTO() { ID = reader.GetInt32(11), name = reader.GetString(13) }
                         };
                         CharacterDTOList.Add(items);
                     }

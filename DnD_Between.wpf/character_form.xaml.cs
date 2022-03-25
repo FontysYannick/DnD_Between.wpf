@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace DnD_Between.wpf
 {
@@ -15,6 +16,18 @@ namespace DnD_Between.wpf
         Character charclass;
 
         private int ID;
+        private string name;
+        private int str;
+        private int dex;
+        private int con;
+        private int intt;
+        private int wis;
+        private int cha;
+        private int level;
+        private int speed;
+        private int class_id;
+        private int race_id;
+
 
         public character_form(MainWindow frm)
         {
@@ -63,51 +76,92 @@ namespace DnD_Between.wpf
 
             CMBLvl.SelectedIndex = 0;
             CMBSpeed.SelectedIndex = 2;
+            CMBClass.SelectedIndex = 0;
+            CMBRace.SelectedIndex = 0;
         }
 
         private void BTNSave_Click(object sender, RoutedEventArgs e)
         {
-            string name = TBName.Text;
-            int str = Int32.Parse(TBStr.Text);
-            int dex = Int32.Parse(TBDex.Text);
-            int con = Int32.Parse(TBCon.Text);
-            int intt = Int32.Parse(TBInt.Text);
-            int wis = Int32.Parse(TBWis.Text);
-            int cha = Int32.Parse(TBCha.Text);
-            int level = Int32.Parse(CMBLvl.Text);
-            int speed = Int32.Parse(CMBSpeed.Text);
-            int class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
-            int race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
+            if (checkempty() == true)
+            {
+                name = TBName.Text;
+                str = Int32.Parse(TBStr.Text);
+                dex = Int32.Parse(TBDex.Text);
+                con = Int32.Parse(TBCon.Text);
+                intt = Int32.Parse(TBInt.Text);
+                wis = Int32.Parse(TBWis.Text);
+                cha = Int32.Parse(TBCha.Text);
+                level = Int32.Parse(CMBLvl.Text);
+                speed = Int32.Parse(CMBSpeed.Text);
+                class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
+                race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
 
-            charcontainer.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
-            frm1.FillDataGrid();
-            this.Close();
+                charcontainer.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
+                frm1.FillDataGrid();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("please fill out all required fields", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BTNUpdate_Click(object sender, RoutedEventArgs e)
         {
-            string name = TBName.Text;
-            int str = Int32.Parse(TBStr.Text);
-            int dex = Int32.Parse(TBDex.Text);
-            int con = Int32.Parse(TBCon.Text);
-            int intt = Int32.Parse(TBInt.Text);
-            int wis = Int32.Parse(TBWis.Text);
-            int cha = Int32.Parse(TBCha.Text);
-            int level = Int32.Parse(CMBLvl.Text);
-            int speed = Int32.Parse(CMBSpeed.Text);
-            int class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
-            int race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
+            if (checkempty())
+            {
+                name = TBName.Text;
+                str = Int32.Parse(TBStr.Text);
+                dex = Int32.Parse(TBDex.Text);
+                con = Int32.Parse(TBCon.Text);
+                intt = Int32.Parse(TBInt.Text);
+                wis = Int32.Parse(TBWis.Text);
+                cha = Int32.Parse(TBCha.Text);
+                level = Int32.Parse(CMBLvl.Text);
+                speed = Int32.Parse(CMBSpeed.Text);
+                class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
+                race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
 
-            charclass.UpdateCharacter(ID, name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
-            frm1.FillDataGrid();
-            this.Close();
+                charcontainer.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
+                frm1.FillDataGrid();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("please fill out all required fields", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BTNDel_Click(object sender, RoutedEventArgs e)
         {
-            charcontainer.DeleteCharacter(this.ID);
-            frm1.FillDataGrid();
-            this.Close();
+            if (MessageBox.Show("Are you sure you want to delete *" + charclass.name + "* ?", "Are You Sure?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                frm1.FillDataGrid();
+                this.Close();
+            }
+            else
+            {
+                charcontainer.DeleteCharacter(this.ID);
+                frm1.FillDataGrid();
+                this.Close();
+            }
+        }
+
+        private bool checkempty()
+        {
+            bool empty = true;
+            foreach (Object o in FRM.Children)
+            {
+                if (o is TextBox)
+                {
+                    TextBox textBox = o as TextBox;
+                    if (textBox.Text == string.Empty)
+                    {
+                        empty = false;
+                    }
+                }
+            }
+            return empty;
         }
     }
 }

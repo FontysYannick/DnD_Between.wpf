@@ -6,15 +6,12 @@
         xmlns:local="clr-namespace:DnD_Between.wpf"
         mc:Ignorable="d"
         Title="character" Height="450" Width="800">
-    <Grid Margin="3,4,-3,-4">
-        <Button x:Name="BTNSave" Content="Save" HorizontalAlignment="Left" Margin="66
-                ,369,0,0" VerticalAlignment="Top" Height="23" Width="77" Click="BTNSave_Click"/>
+    <Grid x:Name="FRM" Margin="3,4,-3,-4">
+        <Button x:Name="BTNSave" Content="Save" HorizontalAlignment="Left" Margin="66,369,0,0" VerticalAlignment="Top" Height="23" Width="77" Click="BTNSave_Click"/>
         <Label Content="Name :" HorizontalAlignment="Left" Margin="66,27,0,0" VerticalAlignment="Top" Height="27"/>
         <TextBox x:Name="TBName" HorizontalAlignment="Left" Margin="151,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="249" Height="27" FontSize="20"/>
-        <Rectangle HorizontalAlignment="Left" Height="170" Margin="66
-                   ,182,0,0" Stroke="Black" VerticalAlignment="Top" Width="280"/>
-        <Label Content="Stats :" HorizontalAlignment="Left" Margin="66
-               ,150,0,0" VerticalAlignment="Top" Height="27"/>
+        <Rectangle HorizontalAlignment="Left" Height="170" Margin="66,182,0,0" Stroke="Black" VerticalAlignment="Top" Width="280"/>
+        <Label Content="Stats :" HorizontalAlignment="Left" Margin="66,150,0,0" VerticalAlignment="Top" Height="27"/>
         <Label Content="Strength" HorizontalAlignment="Left" Margin="89,227,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox x:Name="TBStr" HorizontalAlignment="Left" Margin="89,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Height="28" FontSize="20" TextAlignment="Center"/>
         <Label Content="Dexterity" HorizontalAlignment="Left" Margin="174,227,0,0" VerticalAlignment="Top" Height="28"/>

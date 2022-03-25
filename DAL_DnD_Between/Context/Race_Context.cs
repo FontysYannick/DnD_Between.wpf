@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DAL_DnD_Between
 {
-    public class Race_Context  : DB
+    public class Race_Context : DB
     {
         public List<RaceDTO> Getall()
         {
