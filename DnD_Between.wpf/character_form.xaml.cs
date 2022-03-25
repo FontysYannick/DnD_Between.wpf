@@ -42,8 +42,8 @@ namespace DnD_Between.wpf
             TBCha.Text = charclass.cha.ToString();
             CMBLvl.Text = charclass.level.ToString();
             CMBSpeed.Text = charclass.speed.ToString();
-            CMBClass.SelectedIndex = charclass.class_id - 1;
-            CMBRace.SelectedIndex = charclass.race_id - 1;
+            CMBClass.SelectedIndex = charclass.char_class.ID - 1;
+            CMBRace.SelectedIndex = charclass.char_race.ID - 1;
         }
 
         private void loadCMB()

@@ -11,12 +11,11 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="150" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Level" Width="50" Binding="{Binding level}"/>
-                <DataGridTextColumn Header="Class" Width="100" Binding="{Binding class_id}"/>
-                <DataGridTextColumn Header="Race" Width="100" Binding="{Binding race_id}"/>
+                <DataGridTextColumn Header="Class" Width="100" Binding="{Binding char_class.name}"/>
+                <DataGridTextColumn Header="Race" Width="100" Binding="{Binding char_race.name}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="BTNCreate" Content="Create" Margin="0,10,10,0" Click="BTNCreate_Click" HorizontalAlignment="Right" Width="139" Height="63" VerticalAlignment="Top"/>
-        <Label x:Name="LBSelect" Content="Selected" HorizontalAlignment="Left" Margin="696,189,0,0" VerticalAlignment="Top"/>
         <Button x:Name="BTNCreate_Copy" Content="Create" Margin="0,10,10,0" Click="BTNCreate_Click" HorizontalAlignment="Right" Width="139" Height="63" VerticalAlignment="Top"/>
         <Button x:Name="BTNEdit" Content="Edit" HorizontalAlignment="Right" Margin="0,220,10,0" VerticalAlignment="Top" Height="51" Width="139" Click="BTNEdit_Click"/>
 

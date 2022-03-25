@@ -19,26 +19,26 @@ namespace DnD_Between.wpf
 
         public List<Character> Getall()
         {
-            List<Character> list = new List<Character>();
+            List<Character> list_Character = new List<Character>();
 
             foreach (var item in _Context.Getall())
             {
-                list.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.char_class, item.char_race));
+                list_Character.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, new Class(item.char_class.ID, item.char_class.name), new Race(item.char_race.ID, item.char_race.name)));
             }
 
-            return list;
+            return list_Character;
         }
 
         public List<Character> Getbyid(int ID)
         {
-            List<Character> list = new List<Character>();
+            List<Character> list_Character = new List<Character>();
 
             foreach (var item in _Context.Getall())
             {
-                list.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, item.class_id, item.race_id));
+                list_Character.Add(new Character(item.ID, item.name, item.str, item.dex, item.con, item.intt, item.wis, item.cha, item.level, item.speed, new Class(item.char_class.ID, item.char_class.name), new Race(item.char_race.ID, item.char_race.name)));
             }
 
-            return list;
+            return list_Character;
         }
     }
 }

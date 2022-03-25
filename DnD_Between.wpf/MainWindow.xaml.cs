@@ -61,11 +61,11 @@ namespace DnD_Between.wpf
                         int cha = row.cha;
                         int level = row.level;
                         int speed = row.speed;
-                        int class_id = row.class_id;
-                        int race_id = row.race_id;
+                        Class char_class = row.char_class;
+                        Race char_race = row.char_race;
 
-                        chaclass = new Character(ID, name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
-                        LBSelect.Content = row.ID;
+
+                        chaclass = new Character(ID, name, str, dex, con, intt, wis, cha, level, speed, char_class, char_race);
                         BTNEdit.IsEnabled = true;
                     }
                 }

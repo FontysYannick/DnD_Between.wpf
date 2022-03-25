@@ -16,11 +16,11 @@ namespace DnD_Between.wpf
         public int cha { get; private set; }
         public int level { get; private set; }
         public int speed { get; private set; }
-        public int class_id { get; private set; }
-        public int race_id { get; private set; }
+        public Class char_class { get; private set; }
+        public Race char_race { get; private set; }
 
 
-        public Character(int id, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, int class_id, int race_id)
+        public Character(int id, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, Class char_class, Race char_race)
         {
             this.ID = id;
             this.name = name;
@@ -32,8 +32,8 @@ namespace DnD_Between.wpf
             this.cha = cha;
             this.level = level;
             this.speed = speed;
-            this.class_id = class_id;
-            this.race_id = race_id;
+            this.char_class = char_class;
+            this.char_race = char_race;
         }
 
         public void UpdateCharacter(int ID, string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, int class_id, int race_id)
