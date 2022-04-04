@@ -79,17 +79,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB.cs" />
-    <Compile Include="DTO\CharacterDTO.cs" />
     <Compile Include="Context\Character_Context.cs" />
-    <Compile Include="DTO\ClassDTO.cs" />
     <Compile Include="Context\Class_Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DTO\RaceDTO.cs" />
     <Compile Include="Context\Race_Context.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interface_DnD_Between\Interface_DnD_Between.csproj">
+      <Project>{99f0562f-53c9-4555-b303-6c2540ac8f76}</Project>
+      <Name>Interface_DnD_Between</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

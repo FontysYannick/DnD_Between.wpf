@@ -1,4 +1,4 @@
-﻿namespace DAL_DnD_Between
+﻿namespace Interface_DnD_Between
 {
     public class CharacterDTO
     {

@@ -1,25 +1,41 @@
-﻿using System;
+﻿using Interface_DnD_Between;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace DAL_DnD_Between
 {
-    public class Character_Context : DB
+    public class Character_Context : DB , ICharacter_Context
     {
-        public void AddCharacter(string name, int str, int dex, int con, int intt, int wis, int cha, int level, int speed, int class_id, int race_id)
+        public void AddCharacter(CharacterDTO character)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Character( [name],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id])" +
-                "VALUES ( '" + name + "', '" + str + "', '" + dex + "','" + con + "','" + wis + "','" + intt + "','" + cha + "','" + level + "','" + speed + "','" + class_id + "','" + race_id + "')", Connection());
+            string sqlCharacter = "INSERT INTO Character ([name],[strength],[dexterity],[constitution],[intelligence],[wisdom],[charisma],[level],[speed],[class_id],[race_id]) " +
+                "VALUES (@name,@str,@dex,@con,@intt,@wis,@cha,@level,@speed,@class_id,@race_id)";
 
-            try
+            using (SqlCommand characterCmd = new SqlCommand(sqlCharacter, Connection()))
             {
-                Open();
-                cmd.ExecuteNonQuery();
-                Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                characterCmd.Parameters.AddWithValue("@name", character.name);
+                characterCmd.Parameters.AddWithValue("@str", character.str);
+                characterCmd.Parameters.AddWithValue("@dex", character.dex);
+                characterCmd.Parameters.AddWithValue("@con", character.con);
+                characterCmd.Parameters.AddWithValue("@intt", character.intt);
+                characterCmd.Parameters.AddWithValue("@wis", character.wis);
+                characterCmd.Parameters.AddWithValue("@cha", character.cha);
+                characterCmd.Parameters.AddWithValue("@level", character.level);
+                characterCmd.Parameters.AddWithValue("@speed", character.speed);
+                characterCmd.Parameters.AddWithValue("@class_id", character.char_class.ID);
+                characterCmd.Parameters.AddWithValue("@race_id", character.char_race.ID);
+
+                try
+                {
+                    Open();
+                    characterCmd.ExecuteScalar();
+                    Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL_DnD_Between\DAL_DnD_Between.csproj" />
+    <ProjectReference Include="..\Interface_DnD_Between\Interface_DnD_Between.csproj" />
   </ItemGroup>
 
   <ItemGroup>

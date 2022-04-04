@@ -24,6 +24,7 @@ namespace DAL_DnD_Between
             }
             return succes;
         }
+
         public bool Close()
         {
             bool succes;

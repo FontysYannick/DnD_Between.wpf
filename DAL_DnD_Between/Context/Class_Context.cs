@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Interface_DnD_Between;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace DAL_DnD_Between
 {
-    public class Class_Context : DB
+    public class Class_Context : DB, IClass_Context
     {
         public List<ClassDTO> Getall()
         {

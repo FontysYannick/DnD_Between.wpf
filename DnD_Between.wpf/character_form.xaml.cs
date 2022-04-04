@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace DnD_Between.wpf
 {
@@ -59,6 +61,12 @@ namespace DnD_Between.wpf
             CMBRace.SelectedIndex = charclass.char_race.ID - 1;
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         private void loadCMB()
         {
             for (int i = 1; i <= 20; i++)
@@ -94,9 +102,15 @@ namespace DnD_Between.wpf
                 level = Int32.Parse(CMBLvl.Text);
                 speed = Int32.Parse(CMBSpeed.Text);
                 class_id = Int32.Parse(CMBClass.SelectedValue.ToString());
+                string class_txt = CMBClass.Text;
                 race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
+                string race_txt = CMBRace.Text;
 
-                charcontainer.AddCharacter(name, str, dex, con, intt, wis, cha, level, speed, class_id, race_id);
+                Class clss = new Class(class_id, class_txt);
+                Race race = new Race(race_id, race_txt);
+                charclass = new Character(1, name, str, dex, con, intt, wis, cha, level, speed, clss, race);
+
+                charcontainer.AddCharacter(charclass);
                 frm1.FillDataGrid();
                 this.Close();
             }

@@ -9,6 +9,7 @@ namespace DnD_Between.wpf
     public partial class MainWindow : Window
     {
         private Character_Container chaContainer;
+        private Character_viewer chaViewer;
         private character_form chafrm;
         private Character chaclass;
 
@@ -19,6 +20,7 @@ namespace DnD_Between.wpf
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             BTNEdit.IsEnabled = false;
+            BTNView.IsEnabled = false;
             FillDataGrid();
         }
 
@@ -38,6 +40,12 @@ namespace DnD_Between.wpf
         {
             chafrm = new character_form(this, chaclass);
             chafrm.Show();
+        }
+
+        private void BTNView_Click(object sender, RoutedEventArgs e)
+        {
+            chaViewer = new Character_viewer(chaclass);
+            chaViewer.Show();
         }
 
         private void dgchar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,6 +74,7 @@ namespace DnD_Between.wpf
 
                         chaclass = new Character(ID, name, str, dex, con, intt, wis, cha, level, speed, char_class, char_race);
                         BTNEdit.IsEnabled = true;
+                        BTNView.IsEnabled = true;
                     }
                 }
             }
