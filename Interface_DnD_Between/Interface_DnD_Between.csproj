@@ -45,6 +45,8 @@
     <Compile Include="DTO\ClassDTO.cs" />
     <Compile Include="DTO\RaceDTO.cs" />
     <Compile Include="ICharacter_Context.cs" />
+    <Compile Include="IClass_Context.cs" />
+    <Compile Include="IRace_Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

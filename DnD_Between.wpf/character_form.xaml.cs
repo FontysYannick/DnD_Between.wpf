@@ -106,7 +106,7 @@ namespace DnD_Between.wpf
                 race_id = Int32.Parse(CMBRace.SelectedValue.ToString());
                 string race_txt = CMBRace.Text;
 
-                Class clss = new Class(class_id, class_txt);
+                Class clss = new Class(class_id,class_txt);
                 Race race = new Race(race_id, race_txt);
                 charclass = new Character(1, name, str, dex, con, intt, wis, cha, level, speed, clss, race);
 

@@ -13,6 +13,17 @@ namespace DnD_Between.wpf
             InitializeComponent();
             //name
             LBName.Content = character.name;
+            LBLVL.Content = "L" + character.level;
+            LBRACE.Content = character.char_race.name;
+            LBCLASS.Content = character.char_class.name;
+
+            //modifiers
+            LBSTRMOD.Content = ConfigureByTable(character.str);
+            LBDEXMOD.Content = ConfigureByTable(character.dex);
+            LBCONMOD.Content = ConfigureByTable(character.con);
+            LBINTMOD.Content = ConfigureByTable(character.intt);
+            LBWISMOD.Content = ConfigureByTable(character.wis);
+            LBCHAMOD.Content = ConfigureByTable(character.cha);
 
             //stats
             LBSTR.Content = character.str;
@@ -22,18 +33,15 @@ namespace DnD_Between.wpf
             LBWIS.Content = character.wis;
             LBCHA.Content = character.cha;
 
-            //modifiers
-
-
             //speed
             LBSpeed.Content = character.speed;
         }
 
         private int ConfigureByTable(int score)
         {
-            int[] tableX1 = { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 };  //Even scores
-            int[] tableX2 = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 };  //Odd scores
-            int[] tableY = { -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };        //Modifier values
+            int[] tableX1 = { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30 };      //Even scores
+            int[] tableX2 = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 };      //Odd scores
+            int[] tableY = { -5, -4, -3, -2, -1, 0, +1, +2, +3, +4, +5, +6, +7, +8, +9, +10 };  //Modifier values
 
             //Ability modifiers are assigned directly from a table.
             int result = 0;
